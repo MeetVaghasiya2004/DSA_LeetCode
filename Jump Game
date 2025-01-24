@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int select_index = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if(i>select_index){
+                return false;
+            }
+            select_index = max(select_index , nums[i] + i);
+        }
+        return true;
+    }
+};
