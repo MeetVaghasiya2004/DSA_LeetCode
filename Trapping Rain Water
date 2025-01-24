@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        vector<int> L(n);
+        vector<int> R(n);
+        L[0] = height[0];
+        for (int i=1 ; i<n ; i++)
+        {
+            L[i] = max(L[i-1] , height[i]);
+        }
+        R[n-1] = height[n-1];
+        for( int i = n-2 ; i>=0 ; i--)
+        {
+            R[i] = max(R[i+1] , height[i]);
+        }
+        int result = 0;
+        for(int i=0 ; i<n ; i++)
+        {
+            result += (min(L[i] , R[i])) - height[i];
+        }
+        return result;
+    }
+};
