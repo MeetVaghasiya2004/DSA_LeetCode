@@ -1,0 +1,59 @@
+/*class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n = nums.size(), count = 0 ,res =0;
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+        sort(nums.begin() , nums.end());
+        reverse(nums.begin() , nums.end());
+        if(sum >= target)
+        {
+            if(nums[0] == target)
+            {
+                count = 1;
+            }
+            else
+            {
+                for (int i=0 ; i<n ;i++)
+                {
+                    if(target > 0)
+                    {
+                        target -= nums[i];
+                        count++;
+                    }
+
+                }
+            }
+        }
+        else
+        {
+            count = 0;
+        }
+        return count;
+    }    
+};*/
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n=nums.size();
+        int i=0;
+        int j=0;
+        int minLen=INT_MAX;
+        int Len;
+        int sum=0;
+        while(j<n)
+        {
+            sum+=nums[j];
+            while(sum>=target)
+            {
+                Len=j-i+1;
+                minLen=min(minLen,Len);
+                sum-=nums[i];
+                i++;
+            }
+            j++;
+        }
+        if(minLen==INT_MAX) return 0;
+        return minLen;
+    }
+};
