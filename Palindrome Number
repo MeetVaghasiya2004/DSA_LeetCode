@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        long y=0 ;
+        int X=x;
+        if(x < 0){
+            return false;
+        }else{
+            while(x > 0){
+                int last = (x %10);
+                y = y*10 + last;
+                x/=10;
+            }
+        }
+        return X==y;
+    }
+};
