@@ -7,7 +7,7 @@ public:
                 st.push(s[i]);
             }
             else{
-                if(st.top() == 0)
+                if(st.size() == 0)
                     return false;
                 if(s[i] == ')' && st.top() == '(' ||
                     s[i] == ']' && st.top() == '[' ||
